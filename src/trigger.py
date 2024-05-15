@@ -22,7 +22,7 @@ def trigger_messaging(request_body):
     number_of_times = request_body.number_of_times
     with grpc.insecure_channel('0.0.0.0:50051') as channel:
         client_stub = myproto_pb2_grpc.MyServiceControllerStub(channel)
-        responses = client_stub.ProcessMessaging(generate_requests(number_of_times, message))
+        responses = client_stub.ProcessMessaging(generate_requests(message, number_of_times))
         for response in responses:
             print(f"{datetime.now()}: Received response with status: ", response.status)
             if not response.status:
@@ -30,6 +30,6 @@ def trigger_messaging(request_body):
     return status
 
 
-def generate_requests(number_of_times, message):
+def generate_requests(message, number_of_times):
     for i in range(1, number_of_times+1):
         yield myproto_pb2.Request(message=f"{message} - {i}")
