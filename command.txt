@@ -1,0 +1,9 @@
+cover-agent \
+  --source-file-path "/Users/darias/PycharmProjects/pythonGRPCproject/main.py" \
+  --test-file-path "/Users/darias/PycharmProjects/pythonGRPCproject/src/tests.py" \
+  --code-coverage-report-path "/Users/darias/PycharmProjects/pythonGRPCproject/src/coverage.xml" \
+  --test-command "pytest --cov=. --cov-report=xml --cov-report=term" \
+  --test-command-dir "/Users/darias/PycharmProjects/pythonGRPCproject" \
+  --coverage-type "cobertura" \
+  --desired-coverage 30 \
+  --max-iterations 3 \
